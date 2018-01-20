@@ -18,13 +18,12 @@ app.use((req, res, next) => {
             console.log('Unable to append to server.log');
         }
     });
-    next(); // sonlandırdığımızı belirtiyoruz. Bunu koymazsak express başka hiçibir işlem yapamaz.
+    next(); // If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging.
 });
 
 /*app.use((req, res, next) => {
-    // Örn. site bakıma girdi. Siteye girenler bu sayfa ile karşılaşacak.
+    // Maintaenance Mode On //
     res.render('maintenance.hbs');
-    // next() koymuyoruz çünkü sitede dolaşımı engellemek için express'in ilerlememei lazım.
 });*/
 
 app.use(express.static(__dirname + '/public'));
@@ -39,18 +38,10 @@ hbs.registerHelper('screamIt', (text) => {
 
 app.get('/', (req, res) => {
     // res.send('<h1>Hello Express!</h1>');
-    /*res.send({
-        name: 'Furkan',
-        likes: [
-            'travelling',
-            'tv-series'
-        ]
-    });*/
     res.render('home.hbs', {
         pageTitle: 'Home Page',
         welcomeMessage: 'Welcome to my website'
-        //currentYear: new Date().getFullYear()  // Bunun yerine yukarda registerHelper ile kendi fonksiyonumuzu kullandık. Tüm sayfalarda kullanabiliriz.
-    })
+    });
 });
 
 app.get('/about', (req, res) => {
@@ -63,6 +54,10 @@ app.get('/about', (req, res) => {
 app.get('/bad', (req, res) => {
     res.send({
         errorMessage: 'Unable to handle request'
+        /*likes: [
+            'travelling',
+            'hiking'
+        ]*/
     });
 });
 
