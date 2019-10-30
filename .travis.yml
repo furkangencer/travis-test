@@ -1,0 +1,10 @@
+language: node_js
+before_deploy: "echo 'ready?'"
+deploy:
+  provider: heroku
+  api_key:
+    secure: hy+ZU4EIdgXs9UGRxzvUM/orzm0Lf4LpQ4w9rqj31MXsbDFCu8pVkuCh1IamkJbfcfp7rOcpsTWcKkgBOvWyTevbRGBMLH093FfY2CuJjsB3H4bgUajcL9VKKI9c+1KA62qUaDlqXlrkmsiiQaLhRlHHy7pOaA303itvCvTNkosMsTO4Ov0o1EiY9yoh2EljVfEeDVE8mQwwJghuVI6YUTwKlem1HEHwq4fyREyJU+6J2phvth3DWCUNfxgx93IjTHfCLtsh9229RNRSRf/tdNiKmx/t/JNFPnebyo7SKrYKiWXHbc6BOkMkfxZt9CPaqT+fC6DoFL3hO8/KE/DZfV7jeLfvhEzs/pM99zCwEINaq51Fm/avSRJYxSFT/ulN+w5HorxKPPf7/RkVnHyfjeA8uWHrEO88c+ZeNl15cwag+WVQqazfCZ2b2EZo36XJI9OCrh3ZBtB+xrIFOG6z7qDbbQ2uxKs2Ybg4nEiGMSUSA74KsD/41k5bLBGz/dp/RqQU7Kka3yT8VieacrEJ2pUL9cmF6TysDeaVA6GKEDMYiH0ac9lv8ZauNT8S5DmOfcYF5lTKFy1lMa8TuDjW+rpe9Ke9uaCQL0xA5TDVMVUCMRS83zxpGBYz/XOg97wTz5F96D+QKK5SutedvAJgKiGKMz7c6S2woZKEiIv7rfY=
+  app:
+    master: travis-test
+    production: fierce-shelf-90156
+after_deploy: "echo 'Finished'"
